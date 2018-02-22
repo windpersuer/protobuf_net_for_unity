@@ -7,10 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Client;
-   
 // Generated from: input/Enums.proto
-namespace Client.Metadata
+namespace Client.ProtoBuf
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"CosDgp")]
   public partial class CosDgp : global::ProtoBuf.IExtensible
