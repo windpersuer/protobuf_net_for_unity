@@ -1,16 +1,15 @@
 # protobuf_net_for_unity
-# protobuf_for_unity
-google's protobuf 3.2.0 for Unity3d 5.x
+google's protobuf 2.* for Unity3d 2018
 
 source:
 [google's protobuf](https://github.com/google/protobuf/tree/master/csharp)<br>
-version: 3.2.0<br>
-apply to: Unity3d 5.x<br>
-notes: Unity 2017 and later version, please use google official version<br>
+version: 2.*<br>
+apply to: Unity3d 2018<br>
+notes: Unity 5.0 and before version, please use protobuf_for_unity version<br>
 <br>
 instruction:<br>
-open the unity project: unity_project_protobuf<br>
-![](https://raw.githubusercontent.com/windpersuer/protobuf_for_unity/master/doc/Project.png)<br><br>
+open the unity project: unity_project_protobuf_net<br>
+![](https://raw.githubusercontent.com/windpersuer/protobuf_net_for_unity/master/doc/Project.png)<br><br>
 
 notice the 'NewBehaviourScript.cs' click unity run<br>
 ```C#
@@ -36,13 +35,13 @@ notice the 'NewBehaviourScript.cs' click unity run<br>
     }
 ```
 log out: <br>
-![](https://github.com/windpersuer/protobuf_for_unity/blob/master/doc/Log.png)<br><br>
+![](https://github.com/windpersuer/protobuf_net_for_unity/blob/master/doc/Log.png)<br><br>
 it worked! <br>
 
 <br>
-and then, we should define 'test_msg.proto' in ./proto_origin<br>
+and then, we should define 'test_msg.proto' in ./ProtoGen<br>
 ```protobuf
-syntax = "proto3";
+syntax = "proto2";
 
 message TheMsg {
   string name = 1;
@@ -50,11 +49,7 @@ message TheMsg {
 }
 ```
 
-and, if you haven't set the "envionment variables" of your Operation System, then set it like this: <br>
-Path=C:/.../protobuf_for_unity/protoc.exe<br>
-proto_path=C:/.../protobuf_for_unity/protoc.exe<br>
-Of course, you can copy 'protoc.exe' to anywhere, as long as you filled the right path<br>
 
-at last,  click 'generate_proto.bat' to generate 'TestMsg.cs' into ./proto_autocode<br>
-and copy 'TestMsg.cs' to unity project<br>
+at last, cd './ProtoGen/', click 'protogen.bat' to generate './input/test_msg.cs' into './output/test_msg.cs'<br>
+and copy 'test_msg.cs' to unity project<br>
 
