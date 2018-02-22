@@ -1,4 +1,4 @@
-﻿namespace Client.Metadata
+﻿namespace Client.Protobuf
 {
 	public partial class TheMsg
 	{

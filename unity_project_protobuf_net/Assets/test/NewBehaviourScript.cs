@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
-using Client.Metadata;
+using Client.Protobuf;
 
 public class NewBehaviourScript : MonoBehaviour {
 
