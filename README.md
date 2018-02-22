@@ -38,9 +38,11 @@ log out: <br>
 ![](https://github.com/windpersuer/protobuf_net_for_unity/blob/master/doc/Log.png)<br><br>
 it worked! <br>
 
-<br>
-and then, we should define 'test_msg.proto' in ./ProtoGen<br>
-```
+at last, cd './ProtoGen/', click 'protogen.bat' to generate './input/test_msg.cs' into './output/test_msg.cs'<br>
+and copy 'test_msg.cs' to unity project<br>
+
+
+and 'test_msg.proto' in ./ProtoGen/input/<br>
 ```
 protobuf
 syntax = "proto2";
@@ -50,8 +52,4 @@ message TheMsg {
   int32 num = 2;
 }
 ```
-
-
-at last, cd './ProtoGen/', click 'protogen.bat' to generate './input/test_msg.cs' into './output/test_msg.cs'<br>
-and copy 'test_msg.cs' to unity project<br>
-
+<br>
