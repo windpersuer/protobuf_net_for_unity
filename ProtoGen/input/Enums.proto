@@ -1,5 +1,6 @@
 syntax = "proto2";
 
+package Client.Protobuf;
 message CosDgp
 {
 	enum Type

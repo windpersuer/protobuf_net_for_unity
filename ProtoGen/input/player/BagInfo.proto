@@ -1,0 +1,9 @@
+syntax = "proto2";
+
+package Client.Protobuf;
+message BagInfo {
+  required int32 id = 1;
+  required string description = 2;
+  required int64 max = 3;
+  required float vet = 4;
+}

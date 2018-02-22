@@ -1,0 +1,11 @@
+syntax = "proto2";
+import "input/player/BagInfo.proto";
+
+package Client.Protobuf;
+message PlayerInfo {
+    required int32 id = 1;
+    required string name = 2;
+    required BagInfo baginfo = 3;
+    optional string opt = 4;
+    repeated string strlist = 5;
+}

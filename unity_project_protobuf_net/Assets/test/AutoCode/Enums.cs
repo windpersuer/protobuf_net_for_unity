@@ -7,19 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Client;
-   
 // Generated from: input/Enums.proto
-namespace Client.Metadata
+namespace Client.Protobuf
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"CosDgp")]
   public partial class CosDgp : global::ProtoBuf.IExtensible
   {
     public CosDgp() {}
     
-    private CosDgp.Type _type;
+    private Client.Protobuf.CosDgp.Type _type;
     [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public CosDgp.Type type
+    public Client.Protobuf.CosDgp.Type type
     {
       get { return _type; }
       set { _type = value; }
@@ -46,18 +44,18 @@ namespace Client.Metadata
       get { return _user; }
       set { _user = value; }
     }
-    private CosDgp.RestartReason _restart_reason = CosDgp.RestartReason.ResetPin;
+    private Client.Protobuf.CosDgp.RestartReason _restart_reason = Client.Protobuf.CosDgp.RestartReason.ResetPin;
     [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"restart_reason", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(CosDgp.RestartReason.ResetPin)]
-    public CosDgp.RestartReason restart_reason
+    [global::System.ComponentModel.DefaultValue(Client.Protobuf.CosDgp.RestartReason.ResetPin)]
+    public Client.Protobuf.CosDgp.RestartReason restart_reason
     {
       get { return _restart_reason; }
       set { _restart_reason = value; }
     }
-    private CosDgp.ActiveTask _active_task = CosDgp.ActiveTask.HeartBeat;
+    private Client.Protobuf.CosDgp.ActiveTask _active_task = Client.Protobuf.CosDgp.ActiveTask.HeartBeat;
     [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"active_task", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(CosDgp.ActiveTask.HeartBeat)]
-    public CosDgp.ActiveTask active_task
+    [global::System.ComponentModel.DefaultValue(Client.Protobuf.CosDgp.ActiveTask.HeartBeat)]
+    public Client.Protobuf.CosDgp.ActiveTask active_task
     {
       get { return _active_task; }
       set { _active_task = value; }

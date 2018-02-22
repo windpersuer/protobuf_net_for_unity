@@ -7,10 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Client;
-   
 // Generated from: input/test_msg.proto
-namespace Client.Metadata
+namespace Client.Protobuf
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TheMsg")]
   public partial class TheMsg : global::ProtoBuf.IExtensible
