@@ -4,57 +4,52 @@ using ProtoBuf;
 
 public class ProtobufSerilize  
 {
-
-	/// <summary>
-	/// 序列化
-	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="t"></param>
-	/// <returns></returns>
-	public static string Serialize<T>(T t)
+	public static void Serialize<T>(T t, string filePath)
 	{
-		using (MemoryStream memoryStream = new MemoryStream())
+		if(File.Exists(filePath))
 		{
-			Serializer.Serialize<T>(memoryStream, t);
-			byte [] bytes = memoryStream.ToArray ();
-			string result = Encoding.UTF8.GetString (bytes);
-			return result;
+			File.Delete (filePath);
+		}
+		using (FileStream fileStream = new FileStream (filePath, FileMode.CreateNew))
+		{
+			Serializer.Serialize<T>(fileStream, t);
+			fileStream.Flush ();
 		}
 	}
 
-	/// <summary>
-	/// 反序列化
-	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="content"></param>
-	/// <returns></returns>
-	public static T DeSerialize<T>(string content)
+	public static T DeSerialize<T>(string filePath)
 	{
-		byte [] bytes = Encoding.UTF8.GetBytes (content);
-		using (MemoryStream memoryStream = new MemoryStream(bytes))
+		using (FileStream fileStream = new FileStream (filePath, FileMode.Open))
 		{
-			T t = Serializer.Deserialize<T>(memoryStream);
+			T t = Serializer.Deserialize<T>(fileStream);
 			return t;
 		}
 	}
 
 
+
+	/*
 	public static string SerializeNew<T>(T t)
 	{
-		string filePath = "C:\\D\\test.txt";
-		using (Stream stream = File.Open (filePath, FileMode.CreateNew))
+		using (MemoryStream memoryStream = new MemoryStream())
 		{
-			Serializer.Serialize<T>(stream, t);
+			Serializer.Serialize<T>(memoryStream, t);
+			byte [] bytesBuffer = memoryStream.ToArray ();
+			File.WriteAllBytes (filePath, bytesBuffer);
+
+			string content = Encoding.UTF8.GetString (bytesBuffer);
+			return content;
 		}
 	}
 
 	public static T DeSerializeNew<T>()
 	{
-		string filePath = "C:\\D\\test.txt";
-		using (FileStream stream = new FileStream (filePath, FileMode.Open)) 
+		byte [] bytesBuffer = Encoding.UTF8.GetBytes (content);
+		using (MemoryStream memoryStream = new MemoryStream(bytesBuffer))
 		{
-			T t = Serializer.Deserialize<T>(stream);
+			T t = Serializer.Deserialize<T>(memoryStream);
 			return t;
 		}
 	}
+	*/
 }

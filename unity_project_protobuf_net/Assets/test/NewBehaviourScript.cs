@@ -6,15 +6,66 @@ using Client.Metadata;
 public class NewBehaviourScript : MonoBehaviour {
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 	
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 		if(Input.GetKeyDown(KeyCode.Space))
 		{
-			_TestProtobuff2 ();
+			_TestProtobuff ();
+		}
+	}
+
+	private void _TestProtobuff ()
+	{
+		var p1 = new Person
+		{
+			Id = 10000,
+			Name = "apple inc.",
+			Address = new Address
+			{
+				Line1 = "Cupertino, California, USA",
+				Line2 = "Shenzhen, Guangdong, China"
+			}
+		};
+
+		var p2 = new Person
+		{
+			Id = 10000,
+			Name = "spacex corp.",
+			Address = new Address
+			{
+				Line1 = "Hawthorne, California, USA",
+				Line2 = "Shanghai, China"
+			}
+		};
+
+		string filePath = "C:/D/persons.txt";
+		{
+			//2
+			List<Person> personList = new List<Person>() { p1, p2 };
+			ProtobufSerilize.Serialize<List<Person>>(personList, filePath);
+			string persons = string.Empty;
+			foreach (Person p in personList)
+			{
+				persons += p.Name + ", ";
+			}
+			Debug.Log (persons);
+		}
+
+		{
+			//3
+			List<Person> personList = ProtobufSerilize.DeSerialize<List<Person>> (filePath);
+			string persons = string.Empty;
+			foreach (Person p in personList)
+			{
+				persons += p.Name + ", ";
+			}
+			Debug.Log (persons);
 		}
 	}
 
@@ -23,54 +74,19 @@ public class NewBehaviourScript : MonoBehaviour {
 		//1. new a message.
 		TheMsg message_1 = new TheMsg ();
 		message_1.name = "steve jobs";
-		message_1.num = 32766;
-		Debug.Log ("message1: " + message_1.ToString());
+		message_1.num = 20111005;
+		Debug.Log ("message_1: " + message_1.ToString());
 
-		//2. write byte buffer to file.
-		string content = ProtobufSerilize.Serialize<TheMsg>(message_1);
-		Debug.Log (content);
-		File.WriteAllText("C:/D/message.txt", content);
-
-		TheMsg message2 = ProtobufSerilize.DeSerialize<TheMsg>(content);
-		Debug.Log ("message2: " + message2.name);
-	}
-
-	private void _TestProtobuff ()
-	{
-		var p1 = new Person
+		string filePath = "C:\\D\\message.txt";
 		{
-			Id = 10000,
-			Name = "八百里开外",
-			Address = new Address
-			{
-				Line1 = "Line1",
-				Line2 = "Line2"
-			}
-		};
+			//2. write byte buffer to file.
+			ProtobufSerilize.Serialize<TheMsg>(message_1, filePath);
+		}
 
-		var p2 = new Person
 		{
-			Id = 10000,
-			Name = "一枪",
-			Address = new Address
-			{
-				Line1 = "Flat Line1",
-				Line2 = "Flat Line2"
-			}
-		};
-
-		//写入文件
-		List<Person> pSource = new List<Person>() { p1, p2 };
-		string content = ProtobufSerilize.Serialize<List<Person>>(pSource);
-		Debug.Log (content);
-		File.WriteAllText("C:/D/hello.txt", content);
-
-
-		Debug.Log ("解析部分");
-		List<Person> pResult = ProtobufSerilize.DeSerialize<List<Person>>(content);
-		foreach (Person p in pResult)
-		{
-			Debug.Log (p.Name);
+			//3. read content.
+			TheMsg message_2 = ProtobufSerilize.DeSerialize<TheMsg>(filePath);
+			Debug.Log ("message_2: " + message_2.ToString());
 		}
 	}
 }
