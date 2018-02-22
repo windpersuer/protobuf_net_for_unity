@@ -40,14 +40,15 @@ it worked! <br>
 
 <br>
 and then, we should define 'test_msg.proto' in ./ProtoGen<br>
-```protobuf
+```
+```
+protobuf
 syntax = "proto2";
 
 message TheMsg {
   string name = 1;
   int32 num = 2;
 }
-```
 ```
 
 
